@@ -39,14 +39,31 @@
                         console.log(chosenColor)
                 }
                 function draw(){
-                    $(document).ready(function() {
-                    $('.block').hover(function (){
+                    let drag = false;
+                    let click = false;
+                    let mouseup = true;
+                $(document).ready(function() {
+                    $('.block').mousedown(function (){
                         $(this).css("background", `${chosenColor}`)
-                    }, function() {
+                        drag = false;
+                        click = true;
+                        mouseup = false;
+                    })
+                    $('.block').mousemove(function (){
+                        if(click === true && mouseup === true){
                         $(this).css("background", `${chosenColor}`)
+                        }
+                        drag = true;
+                    })
+                    $('.block').mouseup(function (){
+                        $(this).css("background", `${chosenColor}`)
+                        console.log(drag ? 'drag' : 'click')
+                        drag = true;
+                        mouseup = true;
                     })
                 })
             }
+            
                 draw()
                 function remove(){
                     $('.block').css("background", "white")
