@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pixel Sketch</title>
+        <meta charset="utf-8" lang="en">
+        <link rel="stylesheet" href="./style.css">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+    </head>
+    <body>
+        <h1 style="text-align: center;">Your Pixel Sketch Book</h1>
+        
+        <div class="controls">
+            <h3 style="text-align: center; font-family:Verdana, Geneva, Tahoma, sans-serif;">Controls</h3>
+            <input type="color" name="colorPicker" id="colorPicker">
+            <input type="button" id="submit" value="Submit">
+            <input type="range" id="grid-size" min="1" max="5" value="1">
+            <label id="display-Size">16x16</label>
+            <input type="button" id="clear" value="clear">
+        </div>
+
+        <div class="grid-container">
+               
+        </div>
+
+
+
+        <script defer>
+                // Resources
+                const Color = document.querySelector("#colorPicker")
+                const submit = document.querySelector("#submit")
+                let chosenColor = "#000000";
+                let currentSize = 1;
+                const size = document.querySelector('#grid-size')
+                let container = document.querySelector('.grid-container')
+                let clear = document.querySelector('#clear')
+                // Functions
+                function getColor() {
+                        chosenColor = Color.value;
+                        console.log(chosenColor)
+                }
+                function draw(){
+                    $(document).ready(function() {
+                    $('.block').hover(function (){
+                        $(this).css("background", `${chosenColor}`)
+                    }, function() {
+                        $(this).css("background", `${chosenColor}`)
+                    })
+                })
+            }
+                draw()
+                function remove(){
+                    $('.block').css("background", "white")
+                }
+                //Grid
+                createBoard16()
+                function createBoard16() {
+                for(let i = 0; i < 256; i++){
+                    container.style.gridTemplateColumns = "repeat(16, 1fr)";
+                    container.style.gridTemplateRows = "repeat(16, 1fr)";
+                    let block = document.createElement('div')
+                    $('div.grid-container > div').addClass("block")
+                    container.insertAdjacentElement("beforeend", block)
+                }
+            }
+            function createBoard32() {
+                container.style.gridTemplateColumns = "repeat(32, 1fr)";
+                container.style.gridTemplateRows = "repeat(32, 1fr)";
+                for(let i = 0; i < 1024; i++){
+                    let block = document.createElement('div')
+                    $('div.grid-container > div').addClass("block")
+                    container.insertAdjacentElement("beforeend", block)
+                }
+                draw()
+            }
+            function createBoard36() {
+                container.style.gridTemplateColumns = "repeat(36, 1fr)";
+                container.style.gridTemplateRows = "repeat(36, 1fr)";
+                for(let i = 0; i < 1296; i++){
+                    let block = document.createElement('div')
+                    $('div.grid-container > div').addClass("block")
+                    container.insertAdjacentElement("beforeend", block)
+                }
+                draw()
+            }
+            function createBoard48() {
+                container.style.gridTemplateColumns = "repeat(48, 1fr)";
+                container.style.gridTemplateRows = "repeat(48, 1fr)";
+                for(let i = 0; i < 2304; i++){
+                    let block = document.createElement('div')
+                    $('div.grid-container > div').addClass("block")
+                    container.insertAdjacentElement("beforeend", block)
+                }
+                draw()
+            }
+            function createBoard64() {
+                container.style.gridTemplateColumns = "repeat(64, 1fr)";
+                container.style.gridTemplateRows = "repeat(64, 1fr)";
+                for(let i = 0; i < 4096; i++){
+                    let block = document.createElement('div')
+                    $('div.grid-container > div').addClass("block")
+                    container.insertAdjacentElement("beforeend", block)
+                }
+                draw()
+            }
+                // Event Listeners
+                submit.addEventListener('click', getColor)
+                size.oninput = function () {
+                    currentSize = size.value
+                    console.log(currentSize)
+
+                    if(currentSize == 1){
+                        document.getElementById('display-Size').innerHTML = "16x16"
+                        createBoard16()
+                    }
+                    if(currentSize == 2){
+                        document.getElementById('display-Size').innerHTML = "32x32"
+                        createBoard32()
+                    }
+                    if(currentSize == 3){
+                        document.getElementById('display-Size').innerHTML = "36x36"
+                        createBoard36()
+                    }
+                    if(currentSize == 4){
+                        document.getElementById('display-Size').innerHTML = "48x48"
+                        createBoard48()
+                    }
+                    if(currentSize == 5){
+                        document.getElementById('display-Size').innerHTML = "64x64"
+                        createBoard64()
+                    }
+                }
+
+                clear.addEventListener('click', remove)
+
+                
+        </script>
+    </body>
+</html>

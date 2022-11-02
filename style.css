@@ -1,0 +1,30 @@
+.controls{
+    background: rgb(83, 238, 240);
+    border: 1px  solid rgb(83, 238, 240);
+    border-radius: 20px;
+    width: 500px;
+    margin: auto;   
+}
+#colorPicker{
+    margin-left: 10px;
+    margin-bottom: 10px;
+    border-radius: 100%;
+}
+#submit{
+    border-radius: 100%;
+}
+#grid-size{
+    margin-left: 60px;
+}
+#clear{
+    margin-left: 20px;
+}
+.grid-container{
+    display: grid;
+    width: 500px;
+    height: 500px;
+    margin:auto;
+    margin-top: 20px;
+    border: 1px solid black;
+}
+
