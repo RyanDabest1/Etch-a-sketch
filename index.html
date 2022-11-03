@@ -10,15 +10,16 @@
         <h1 style="text-align: center;">Your Pixel Sketch Book</h1>
         
         <div class="controls">
-            <h3 style="text-align: center; font-family:Verdana, Geneva, Tahoma, sans-serif;">Controls</h3>
+            <h3 style="text-align: center; color:black; text-shadow: 0 0 1px #000000;">Controls</h3>
             <input type="color" name="colorPicker" id="colorPicker">
             <input type="button" id="submit" value="Submit">
             <input type="range" id="grid-size" min="1" max="5" value="1">
-            <label id="display-Size">16x16</label>
+            <label id="display-Size" style="color: black ;">16x16</label>
             <input type="button" id="clear" value="clear">
+
         </div>
 
-        <div class="grid-container">
+        <div class="grid-container" style="background-color: white;">
                
         </div>
 
@@ -36,7 +37,6 @@
                 // Functions
                 function getColor() {
                         chosenColor = Color.value;
-                        console.log(chosenColor)
                 }
                 function draw(){
                     let click;
